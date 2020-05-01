@@ -67,7 +67,7 @@ body {font-family: Arial;}
     <th>Input</th>
     <th>Target</th>
     <th>Bicubic</th>
-    <th>Model</th>
+    <th>temp=1</th>
   </tr>
   <tr>
     <td><img src="celeba_8_32/batch-0-item-0-source.jpeg" height=200 width=200></td>
@@ -80,12 +80,14 @@ body {font-family: Arial;}
     <td><img src="celeba_8_32/batch-0-item-1-target.jpeg" height=200 width=200></td>
     <td><img src="celeba_8_32/batch-0-item-1-bicubic.jpeg" height=200 width=200 title=" 29.111193 - SSIM: 0.625641"></td>
     <td><img src="celeba_8_32/batch-0-item-1-output.jpeg" height=200 width=200 title=" 29.444642 - SSIM: 0.726030"></td>
+
   </tr>
   <tr>
     <td><img src="celeba_8_32/batch-0-item-2-source.jpeg" height=200 width=200></td>
     <td><img src="celeba_8_32/batch-0-item-2-target.jpeg" height=200 width=200></td>
     <td><img src="celeba_8_32/batch-0-item-2-bicubic.jpeg" height=200 width=200 title=" PSNR: 28.449715 - SSIM: 0.555592"></td>
     <td><img src="celeba_8_32/batch-0-item-2-output.jpeg" height=200 width=200 title=" PSNR: 29.801642 - SSIM: 0.704137"></td>
+
   </tr>
   <tr>
     <td><img src="celeba_8_32/batch-0-item-3-source.jpeg" height=200 width=200></td>
@@ -534,111 +536,166 @@ body {font-family: Arial;}
   <h3>CelebA 64 -> 128 - YCbCr</h3>
   <p> RGB is converted to YCbCr color space. Y channel is upscaled using seq2seq. Cb and Cr channels are upsampled using bicubic. Then upsampled channels are concatened and converted back to RGB.
   <p>6 heads - 4 enc - 6 dec - step 70000 </p>
-  <p> <b>Model PSNR</b>: 34.752582 - <b>Model SSIM</b>: 0.956301</p>
-  <p> <b>Bicubic PSNR</b>: 36.053715- <b>Bicubic SSIM</b>: 0.970895 </p>
+
+  <table>
+    <tr>
+      <th> <b> Sampling </b> </th>
+      <th> <b> Model PSNR </b> </th>
+      <th> <b> Bicubic PSNR </b> </th>
+      <th> <b> Model SSIM </b> </th>
+      <th> <b> Bicubic SSIM </b> </th>
+    </tr>
+    <tr>
+      <th>  Greedy decoding  </th>
+      <th bgcolor="red">  36.268693 </th>
+      <th>  36.053715  </th>
+      <th bgcolor="red">  0.976886 </th>
+      <th>  0.970895  </th>
+    </tr>
+    <tr>
+      <th>  temp=1  </th>
+      <th>  34.752582  </th>
+      <th>  36.053715  </th>
+      <th>  0.956301  </th>
+      <th>  0.970895  </th>
+    </tr>
+    <tr>
+      <th>  temp=0.8  </th>
+      <th>  35.181243  </th>
+      <th>  36.053715  </th>
+      <th>  0.964692 </th>
+      <th>  0.970895  </th>
+    </tr>
+    <tr>
+      <th> temp=0.5  </th>
+      <th> 35.690691  </th>
+      <th> 36.053715  </th>
+      <th> 0.971533</th>
+      <th> 0.970895  </th>
+    </tr>
+	
+  </table>
+
 
  <table>
   <tr>
     <th>Input</th>
     <th>Target</th>
     <th>Bicubic</th>
-    <th>Model</th>
+    <th>Model (temp=1)</th>
+    <th>Model (greedy)</th>
   </tr>
   <tr>
     <td><img src="celeba_64_128_ycbcr/batch-0-item-0-source-rgb.jpeg" height=200 width=200></td>
     <td><img src="celeba_64_128_ycbcr/batch-0-item-0-target-rgb.jpeg" height=200 width=200></td>
     <td><img src="celeba_64_128_ycbcr/batch-0-item-0-bicubic-rgb.jpeg" height=200 width=200 title=" PSNR: 32.935373 - SSIM: 0.941010"></td>
     <td><img src="celeba_64_128_ycbcr/batch-0-item-0-reconstruct.jpeg" height=200 width=200 title=" PSNR: 32.182763 - SSIM: 0.909057"></td>
+    <td><img src="celeba_64_128_ycbcr/greedy/batch-0-item-3-reconstruct.jpeg" height=200 width=200></td>
   </tr>
   <tr>
     <td><img src="celeba_64_128_ycbcr/batch-0-item-1-source-rgb.jpeg" height=200 width=200></td>
     <td><img src="celeba_64_128_ycbcr/batch-0-item-1-target-rgb.jpeg" height=200 width=200></td>
     <td><img src="celeba_64_128_ycbcr/batch-0-item-1-bicubic-rgb.jpeg" height=200 width=200 title=" PSNR: 35.705197 - SSIM: 0.966853"></td>
     <td><img src="celeba_64_128_ycbcr/batch-0-item-1-reconstruct.jpeg" height=200 width=200 title=" PSNR: 34.115527 - SSIM: 0.943724"></td>
+    <td><img src="celeba_64_128_ycbcr/greedy/batch-1-item-0-reconstruct.jpeg" height=200 width=200></td>
   </tr>
   <tr>
     <td><img src="celeba_64_128_ycbcr/batch-0-item-2-source-rgb.jpeg" height=200 width=200></td>
     <td><img src="celeba_64_128_ycbcr/batch-0-item-2-target-rgb.jpeg" height=200 width=200></td>
     <td><img src="celeba_64_128_ycbcr/batch-0-item-2-bicubic-rgb.jpeg" height=200 width=200 title=" PSNR: 40.352002 - SSIM: 0.989720"></td>
     <td><img src="celeba_64_128_ycbcr/batch-0-item-2-reconstruct.jpeg" height=200 width=200 title=" PSNR: 37.588646 - SSIM: 0.984875"></td>
+    <td><img src="celeba_64_128_ycbcr/greedy/batch-1-item-2-reconstruct.jpeg" height=200 width=200></td>
   </tr>
   <tr>
     <td><img src="celeba_64_128_ycbcr/batch-0-item-3-source-rgb.jpeg" height=200 width=200></td>
     <td><img src="celeba_64_128_ycbcr/batch-0-item-3-target-rgb.jpeg" height=200 width=200></td>
     <td><img src="celeba_64_128_ycbcr/batch-0-item-3-bicubic-rgb.jpeg" height=200 width=200 title=" PSNR: 35.621170 - SSIM: 0.961995"></td>
     <td><img src="celeba_64_128_ycbcr/batch-0-item-3-reconstruct.jpeg" height=200 width=200 title=" PSNR: 34.390082 - SSIM: 0.948842"></td>
+    <td><img src="celeba_64_128_ycbcr/greedy/batch-3-item-3-reconstruct.jpeg" height=200 width=200></td>
   </tr>
   <tr>
     <td><img src="celeba_64_128_ycbcr/batch-1-item-0-source-rgb.jpeg" height=200 width=200></td>
     <td><img src="celeba_64_128_ycbcr/batch-1-item-0-target-rgb.jpeg" height=200 width=200></td>
     <td><img src="celeba_64_128_ycbcr/batch-1-item-0-bicubic-rgb.jpeg" height=200 width=200 title=" PSNR: 34.067235 - SSIM: 0.970199"></td>
     <td><img src="celeba_64_128_ycbcr/batch-1-item-0-reconstruct.jpeg" height=200 width=200 title=" PSNR: 32.393119 - SSIM: 0.933502"></td>
+    <td><img src="celeba_64_128_ycbcr/greedy/batch-2-item-3-reconstruct.jpeg" height=200 width=200></td>
   </tr>
   <tr>
     <td><img src="celeba_64_128_ycbcr/batch-1-item-1-source-rgb.jpeg" height=200 width=200></td>
     <td><img src="celeba_64_128_ycbcr/batch-1-item-1-target-rgb.jpeg" height=200 width=200></td>
     <td><img src="celeba_64_128_ycbcr/batch-1-item-1-bicubic-rgb.jpeg" height=200 width=200 title=" PSNR: 36.414641 - SSIM: 0.972921"></td>
     <td><img src="celeba_64_128_ycbcr/batch-1-item-1-reconstruct.jpeg" height=200 width=200 title=" PSNR: 35.405086 - SSIM: 0.963598"></td>
+    <td><img src="celeba_64_128_ycbcr/greedy/batch-1-item-1-reconstruct.jpeg" height=200 width=200></td>
   </tr>
   <tr>
     <td><img src="celeba_64_128_ycbcr/batch-1-item-2-source-rgb.jpeg" height=200 width=200></td>
     <td><img src="celeba_64_128_ycbcr/batch-1-item-2-target-rgb.jpeg" height=200 width=200></td>
     <td><img src="celeba_64_128_ycbcr/batch-1-item-2-bicubic-rgb.jpeg" height=200 width=200 title=" PSNR: 35.104598 - SSIM: 0.972979"></td>
     <td><img src="celeba_64_128_ycbcr/batch-1-item-2-reconstruct.jpeg" height=200 width=200 title=" PSNR: 34.982492 - SSIM: 0.968857"></td>
+    <td><img src="celeba_64_128_ycbcr/greedy/batch-3-item-0-reconstruct.jpeg" height=200 width=200></td>
   </tr>
   <tr>
     <td><img src="celeba_64_128_ycbcr/batch-1-item-3-source-rgb.jpeg" height=200 width=200></td>
     <td><img src="celeba_64_128_ycbcr/batch-1-item-3-target-rgb.jpeg" height=200 width=200></td>
     <td><img src="celeba_64_128_ycbcr/batch-1-item-3-bicubic-rgb.jpeg" height=200 width=200 title=" PSNR: 35.152069 - SSIM: 0.976541"></td>
     <td><img src="celeba_64_128_ycbcr/batch-1-item-3-reconstruct.jpeg" height=200 width=200 title=" PSNR: 34.889894 - SSIM: 0.971406"></td>
+    <td><img src="celeba_64_128_ycbcr/greedy/batch-2-item-0-reconstruct.jpeg" height=200 width=200></td>
   </tr>
   <tr>
     <td><img src="celeba_64_128_ycbcr/batch-2-item-0-source-rgb.jpeg" height=200 width=200></td>
     <td><img src="celeba_64_128_ycbcr/batch-2-item-0-target-rgb.jpeg" height=200 width=200></td>
     <td><img src="celeba_64_128_ycbcr/batch-2-item-0-bicubic-rgb.jpeg" height=200 width=200 title=" PSNR: 35.231042 - SSIM: 0.973538"></td>
     <td><img src="celeba_64_128_ycbcr/batch-2-item-0-reconstruct.jpeg" height=200 width=200 title=" PSNR: 33.795413 - SSIM: 0.956929"></td>
+    <td><img src="celeba_64_128_ycbcr/greedy/batch-3-item-2-reconstruct.jpeg" height=200 width=200></td>
   </tr>
   <tr>
     <td><img src="celeba_64_128_ycbcr/batch-2-item-1-source-rgb.jpeg" height=200 width=200></td>
     <td><img src="celeba_64_128_ycbcr/batch-2-item-1-target-rgb.jpeg" height=200 width=200></td>
     <td><img src="celeba_64_128_ycbcr/batch-2-item-1-bicubic-rgb.jpeg" height=200 width=200 title=" PSNR: 35.198180 - SSIM: 0.969430"></td>
     <td><img src="celeba_64_128_ycbcr/batch-2-item-1-reconstruct.jpeg" height=200 width=200 title=" PSNR: 34.550252 - SSIM: 0.960860"></td>
+    <td><img src="celeba_64_128_ycbcr/greedy/batch-0-item-2-reconstruct.jpeg" height=200 width=200></td>
   </tr>
   <tr>
     <td><img src="celeba_64_128_ycbcr/batch-2-item-2-source-rgb.jpeg" height=200 width=200></td>
     <td><img src="celeba_64_128_ycbcr/batch-2-item-2-target-rgb.jpeg" height=200 width=200></td>
     <td><img src="celeba_64_128_ycbcr/batch-2-item-2-bicubic-rgb.jpeg" height=200 width=200 title=" PSNR: 40.241619 - SSIM: 0.991377"></td>
     <td><img src="celeba_64_128_ycbcr/batch-2-item-2-reconstruct.jpeg" height=200 width=200 title=" PSNR: 37.587983 - SSIM: 0.986598"></td>
+    <td><img src="celeba_64_128_ycbcr/greedy/batch-3-item-1-reconstruct.jpeg" height=200 width=200></td>
   </tr>
   <tr>
     <td><img src="celeba_64_128_ycbcr/batch-2-item-3-source-rgb.jpeg" height=200 width=200></td>
     <td><img src="celeba_64_128_ycbcr/batch-2-item-3-target-rgb.jpeg" height=200 width=200></td>
     <td><img src="celeba_64_128_ycbcr/batch-2-item-3-bicubic-rgb.jpeg" height=200 width=200 title="PSNR: 34.722099 - SSIM: 0.962714"></td>
     <td><img src="celeba_64_128_ycbcr/batch-2-item-3-reconstruct.jpeg" height=200 width=200 title="PSNR: 33.673754 - SSIM: 0.947099"></td>
+    <td><img src="celeba_64_128_ycbcr/greedy/batch-1-item-3-reconstruct.jpeg" height=200 width=200></td>
   </tr>
   <tr>
     <td><img src="celeba_64_128_ycbcr/batch-3-item-0-source-rgb.jpeg" height=200 width=200></td>
     <td><img src="celeba_64_128_ycbcr/batch-3-item-0-target-rgb.jpeg" height=200 width=200></td>
     <td><img src="celeba_64_128_ycbcr/batch-3-item-0-bicubic-rgb.jpeg" height=200 width=200 title="PSNR: 36.138849 - SSIM: 0.969346"></td>
     <td><img src="celeba_64_128_ycbcr/batch-3-item-0-reconstruct.jpeg" height=200 width=200 title="PSNR: 34.649315 - SSIM: 0.954757"></td>
+    <td><img src="celeba_64_128_ycbcr/greedy/batch-0-item-1-reconstruct.jpeg" height=200 width=200></td>
   </tr>
   <tr>
     <td><img src="celeba_64_128_ycbcr/batch-3-item-1-source-rgb.jpeg" height=200 width=200></td>
     <td><img src="celeba_64_128_ycbcr/batch-3-item-1-target-rgb.jpeg" height=200 width=200></td>
     <td><img src="celeba_64_128_ycbcr/batch-3-item-1-bicubic-rgb.jpeg" height=200 width=200 title=" PSNR: 36.073717 - SSIM: 0.977780"></td>
     <td><img src="celeba_64_128_ycbcr/batch-3-item-1-reconstruct.jpeg" height=200 width=200 title=" PSNR: 35.115903 - SSIM: 0.969234"></td>
+    <td><img src="celeba_64_128_ycbcr/greedy/batch-0-item-0-reconstruct.jpeg" height=200 width=200></td>
   </tr>
   <tr>
     <td><img src="celeba_64_128_ycbcr/batch-3-item-2-source-rgb.jpeg" height=200 width=200></td>
     <td><img src="celeba_64_128_ycbcr/batch-3-item-2-target-rgb.jpeg" height=200 width=200></td>
     <td><img src="celeba_64_128_ycbcr/batch-3-item-2-bicubic-rgb.jpeg" height=200 width=200 title="PSNR: 39.101229 - SSIM: 0.987499"></td>
     <td><img src="celeba_64_128_ycbcr/batch-3-item-2-reconstruct.jpeg" height=200 width=200 title=" PSNR: 37.309082 - SSIM: 0.981759"></td>
+    <td><img src="celeba_64_128_ycbcr/greedy/batch-2-item-1-reconstruct.jpeg" height=200 width=200></td>
   </tr>
   <tr>
     <td><img src="celeba_64_128_ycbcr/batch-3-item-3-source-rgb.jpeg" height=200 width=200></td>
     <td><img src="celeba_64_128_ycbcr/batch-3-item-3-target-rgb.jpeg" height=200 width=200></td>
     <td><img src="celeba_64_128_ycbcr/batch-3-item-3-bicubic-rgb.jpeg" height=200 width=200 title=" PSNR: 34.800415 - SSIM: 0.950420"></td>
     <td><img src="celeba_64_128_ycbcr/batch-3-item-3-reconstruct.jpeg" height=200 width=200 title=" PSNR: 33.412005 - SSIM: 0.919724"></td>
+    <td><img src="celeba_64_128_ycbcr/greedy/batch-2-item-2-reconstruct.jpeg" height=200 width=200></td>
   </tr>
 
 
