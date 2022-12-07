@@ -1,100 +1,38 @@
-body {
-	font-family: 'Droid Sans', 'Droid Arabic Naskh', sans-serif;
-	font-style: normal;
-	background-color: rgba(1, 3, 5, 1);
-	color: white;
+html {
+  max-width: 70ch;
+  padding: 3em 1em;
+  margin: auto;
+  line-height: 1.75;
+  font-size: 1.25em;
+  background-color: #002b36;
 }
 
-.title {
-	color: rgba(234, 255, 33, 1);
-	font-weight: bold;
+h1,h2,h3,h4,h5,h6 {
+  margin: 3em 0 1em;
 }
 
-.bracet {
-	color: rgba(27, 254, 206, 1);
+p,ol,ul {
+  margin-bottom: 2em;
+  color: #586e75;
+  font-family: sans-serif;
 }
 
 a {
-	text-decoration: none;
+    color: #b58900;
 }
 
-a:link {
-	color: rgba(32, 243, 221, 1);
+.cyan {
+    color: #2aa198;
 }
 
-a:hover {
-	color: rgba(2, 123, 110, 1);
+.magenta {
+    color: #d33682;
 }
 
-a:visited {
-	color: rgba(32, 243, 221, 1);
-	/*color: rgba(2, 123, 110, 1);*/
+.yellow {
+    color: #b58900;
 }
 
-a:visited:hover {
-	color: rgba(2, 123, 110, 1);
+.blue {
+    color: #268bd2;
 }
-
-.email {
-/*	background: black; */
-	background: gray;
-	color: black;
-	padding-right: 2px;
-	padding-left: 2px;
-	padding-bottom: 1px;
-	padding-top: 1px;
-}
-
-.name {
-	font-weight: bold;
-	font-size: 30px;
-	color: #2DA4B3; 
-}
-
-.avatar {
-	margin-right: 300px;
-}
-
-.div-text {
-	width: 600px;
-}
-
-.bio {
-	color: rgba(45, 164, 179, 1);
-	font-size: 15px;
-}
-
-.desc {
-	color: rgba(187, 248, 71, 1);
-}
-
-/*
-     FILE ARCHIVED ON 10:58:51 Oct 24, 2016 AND RETRIEVED FROM THE
-     INTERNET ARCHIVE ON 01:18:00 Feb 14, 2018.
-     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
-
-     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
-     SECTION 108(a)(3)).
-*/
-
-/*
-     FILE ARCHIVED ON 08:02:58 Aug 24, 2018 AND RETRIEVED FROM THE
-     INTERNET ARCHIVE ON 12:43:29 Dec 11, 2018.
-     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
-
-     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
-     SECTION 108(a)(3)).
-*/
-/*
-playback timings (ms):
-  LoadShardBlock: 98.795 (3)
-  esindex: 0.009
-  captures_list: 118.093
-  CDXLines.iter: 13.277 (3)
-  PetaboxLoader3.datanode: 92.345 (4)
-  exclusion.robots: 0.402
-  exclusion.robots.policy: 0.388
-  RedisCDXSource: 1.822
-  PetaboxLoader3.resolve: 23.789
-  load_resource: 128.607
-*/
